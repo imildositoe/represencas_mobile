@@ -33,6 +33,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -101,7 +103,7 @@ public class EstPresencasEstatisticasFragment extends Fragment {
         tvNome.setText(nome);
 
         AttendanceService attendanceService = RetrofitClient.getClient().create(AttendanceService.class);
-        Call<TurmasList> call = attendanceService.getTurmas(localStorage.getIdUser(), 2020);
+        Call<TurmasList> call = attendanceService.getTurmas(localStorage.getIdUser(), Calendar.getInstance().get(Calendar.YEAR));
         call.enqueue(new Callback<TurmasList>() {
             @Override
             public void onResponse(@NonNull Call<TurmasList> call, @NonNull Response<TurmasList> response) {
