@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static Retrofit retrofit = null;
-    private static final String BASE_URL = "http://192.168.43.228:8000/";
+    private static final String BASE_URL = "https://represencas-api.herokuapp.com/";
 
 
     public static Retrofit getClient() {

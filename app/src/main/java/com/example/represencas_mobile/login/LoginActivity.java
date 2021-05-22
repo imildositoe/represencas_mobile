@@ -143,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 AttendanceService attendanceService = RetrofitClient.getClient().create(AttendanceService.class);
                 Call<EstudantesList> call = attendanceService.authUser();
+                Log.e("Call", String.valueOf(call));
                 call.enqueue(new Callback<EstudantesList>() {
                     @Override
                     public void onResponse(@NonNull Call<EstudantesList> call, @NonNull Response<EstudantesList> response) {
@@ -150,8 +151,10 @@ public class LoginActivity extends AppCompatActivity {
                         boolean flag = false;
 
                         assert response.body() != null;
+                        Log.e("Estudantes", String.valueOf(response.body().getEstudantes()));
                         for (int i = 0; i < response.body().getEstudantes().size(); i++) {
                             Estudantes estudante = response.body().getEstudantes().get(i);
+                            Log.e("Estudante", String.valueOf(estudante));
 
                             if (email.equals(estudante.getEmail()) && senha.equals(estudante.getSenha())) {
                                 flag = true;
